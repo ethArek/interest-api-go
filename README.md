@@ -14,9 +14,11 @@
 
 ## Deleting running container
 
-`$ docker ps`
-`$ docker stop <container_id>`
-`$ docker rm <container_id>`
+```
+$ docker ps
+$ docker stop <container_id>
+$ docker rm <container_id>
+```
 
 ## Contributing
 

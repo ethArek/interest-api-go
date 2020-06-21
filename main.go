@@ -1,28 +1,24 @@
 package main
 
 import (
-    "io"
-    "log"
-    "net/http"
-    "os"
+	"fmt"
+	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func main() {
 
-    http.HandleFunc("/", ExampleHandler)
+	r := mux.NewRouter()
 
-    port := os.Getenv("PORT")
-    if port == "" {
-        port = "8080"
-    }
+	r.HandleFunc("/", rootHandler)
 
-    log.Println("** Service Started on Port " + port + " **")
-    if err := http.ListenAndServe(":"+port, nil); err != nil {
-        log.Fatal(err)
-    }
+	fmt.Println("Listening on : 8080")
+	http.ListenAndServe(":8080", r)
 }
 
-func ExampleHandler(w http.ResponseWriter, r *http.Request) {
-    w.Header().Add("Content-Type", "application/json")
-    io.WriteString(w, `{"status":"ok"}`)
+func rootHandler(w http.ResponseWriter, r *http.Request) {
+
+	fmt.Fprintf(w, "Docker test server running!")
+
 }

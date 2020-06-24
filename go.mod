@@ -1,4 +1,4 @@
-module example.com/m/v2
+module github.com/ethArek/interest-api-go
 
 go 1.14
 

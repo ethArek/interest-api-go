@@ -1,6 +1,6 @@
 FROM golang:1.14.4
 
-ENV APP_NAME myproject
+ENV APP_NAME interest-api
 ENV PORT 8080
 
 COPY . /go/src/${APP_NAME}

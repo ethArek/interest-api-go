@@ -1,6 +1,17 @@
 version: '3'
 services:
   core:
+    image: 'interest-api-core'
     build: .
     ports:
       - '8080:8080'
+  db:
+    image: 'mongo-db'
+    environment:
+      - MONGO_INITDB_DATABASE=interest-db
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=pass
+    volumes:
+      - ./mongo-volume:/data/db
+    ports:
+      - '27017:27017'

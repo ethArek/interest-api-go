@@ -1,17 +1,15 @@
 version: '3'
 services:
-  core:
-    image: 'interest-api-core'
-    build: .
+  server:
+    image: 'interest-api-server'
+    build:
+      dockerfile: Dockerfile
+      context: .
     ports:
       - '8080:8080'
-  db:
-    image: 'mongo-db'
+  postgres:
+    image: 'postgres:latest'
     environment:
-      - MONGO_INITDB_DATABASE=interest-db
-      - MONGO_INITDB_ROOT_USERNAME=user
-      - MONGO_INITDB_ROOT_PASSWORD=pass
+      - POSTGRES_PASSWORD=postgres_password
     volumes:
-      - ./mongo-volume:/data/db
-    ports:
-      - '27017:27017'
+      - ./postgres-data:/var/lib/postgresql/data

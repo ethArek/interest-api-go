@@ -2,7 +2,6 @@ package services
 
 import (
 	"github.com/ethArek/interest-api-go/app/types"
-	"github.com/go-pg/pg"
 )
 
 // InterestService struct
@@ -29,13 +28,5 @@ func (u *InterestService) GetInterestByID(id string) *types.Interest {
 
 // PostInterest method
 func (u *InterestService) PostInterest(body types.CreateInterest) *types.Interest {
-	db := pg.Connect(&pg.Options{
-		Addr:     "interestapigo_postgres_1:5432",
-		User:     "postgres",
-		Password: "postgres_password",
-	})
-
-	defer db.Close()
-
 	return &types.Interest{}
 }

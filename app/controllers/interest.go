@@ -22,8 +22,17 @@ func GetInterests(w http.ResponseWriter, r *http.Request) {
 		panic("sth")
 	}
 
-	var interest *types.Interest
-	errorek := db.QueryRow(context.Background(), "SELECT id, name, language FROM interests WHERE name = $1", "interest").Scan(&interest)
+	var (
+		name     string
+		id       int
+		language int
+	)
+	errorek := db.QueryRow(context.Background(), "SELECT id, name, language FROM interests WHERE name = $1", "interest").Scan(&id, &name, &language)
+	interest := &types.Interest{
+		ID:       id,
+		Name:     name,
+		Language: language,
+	}
 	if errorek != nil {
 		fmt.Println(errorek)
 		json.NewEncoder(w).Encode(errorek)

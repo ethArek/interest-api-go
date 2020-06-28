@@ -12,8 +12,9 @@ type InterestService struct {
 func (u *InterestService) GetInterests() []*types.Interest {
 	return []*types.Interest{
 		&types.Interest{
-			ID:   "50fd10d3-3d38-451b-b75e-121030ce13de",
-			Name: "interestname",
+			ID:       1,
+			Name:     "interestname",
+			Language: 1,
 		},
 	}
 }
@@ -21,8 +22,9 @@ func (u *InterestService) GetInterests() []*types.Interest {
 // GetInterestByID method
 func (u *InterestService) GetInterestByID(id string) *types.Interest {
 	return &types.Interest{
-		ID:   "50fd10d3-3d38-451b-b75e-121030ce13de",
-		Name: "interestname",
+		ID:       1,
+		Name:     "interestname",
+		Language: 1,
 	}
 }
 
